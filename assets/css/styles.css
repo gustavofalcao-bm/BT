@@ -1,20 +1,18 @@
-/* assets/css/styles.css */
-
 /* ========== Tokens (Material-like) ========== */
 :root {
-  --color-bg: #0b1320;            /* fundo técnico escuro */
-  --color-surface: #111a2b;       /* cartões/superfícies */
-  --color-primary: #0e4b9f;       /* azul institucional (proposta) */
-  --color-accent: #00b5e2;        /* ciano/teal de destaque (proposta) */
-  --color-text: #e6eefc;          /* texto em dark */
-  --color-muted: #8aa0c2;         /* secundário/descritivo */
+  --color-bg: #0b1320;
+  --color-surface: #111a2b;
+  --color-primary: #0e4b9f;
+  --color-accent: #00b5e2;
+  --color-text: #e6eefc;
+  --color-muted: #8aa0c2;
   --color-border: #1d2a44;
   --shadow-1: 0 4px 16px rgba(0,0,0,.25);
   --radius: 12px;
   --gap: 16px;
 }
 
-/* ========== Reset mínimo ========== */
+/* Reset mínimo */
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body {
@@ -24,7 +22,7 @@ body {
   background: radial-gradient(1200px 600px at 80% -10%, rgba(0,181,226,.12), transparent 60%) var(--color-bg);
 }
 
-/* ========== Header / Nav ========== */
+/* Header / Nav */
 .app-header {
   position: sticky; top: 0; z-index: 40;
   display: flex; align-items: center; justify-content: space-between;
@@ -57,14 +55,13 @@ body {
 }
 .app-nav__item.is-active { outline: 2px solid rgba(0,181,226,.6); outline-offset: 0; }
 
-/* ========== Hero com banner ========== */
+/* Hero com banner */
 .hero {
   position: relative; isolation: isolate;
   min-height: 240px;
   display: grid; place-items: center;
   padding: 32px 16px;
-  /* Substitua pelo arquivo local baixado do banner */
-  background-image: url("../images/banner.jpg");
+  background-image: url("../images/base-telco-fundo.jpg");
   background-size: cover; background-position: center;
   border-bottom: 1px solid var(--color-border);
 }
@@ -76,7 +73,7 @@ body {
 .hero__title { margin: 0 0 8px; font-size: clamp(22px, 3vw, 32px); }
 .hero__subtitle { margin: 0; color: var(--color-muted); }
 
-/* ========== Layout conteúdo ========== */
+/* Layout conteúdo */
 .container { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
 .section { display: none; }
 .section.is-visible { display: block; }
@@ -105,7 +102,7 @@ body {
 .kpi-card__value { margin: 0 0 6px; font-size: clamp(22px, 3vw, 32px); font-weight: 700; color: #fff; }
 .kpi-card__meta { margin: 0; color: var(--color-muted); font-size: 13px; }
 
-/* ========== Spinner global (logo BT girando) ========== */
+/* Spinner global */
 .spinner {
   position: fixed; inset: 0; display: none; place-items: center;
   background: rgba(11,19,32,.55); backdrop-filter: blur(2px);
@@ -124,13 +121,13 @@ body {
   animation: spin 2.4s linear infinite reverse;
 }
 
-/* Keyframes suaves */
+/* Keyframes */
 @keyframes spin {
   from { transform: rotate(0); }
   to   { transform: rotate(360deg); }
 }
 
-/* ========== Footer ========== */
+/* Footer */
 .app-footer {
   padding: 16px; text-align: center; color: var(--color-muted);
   border-top: 1px solid var(--color-border);
