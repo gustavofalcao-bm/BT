@@ -56,10 +56,33 @@
         </div>
       </section>
 
-      <section id="noc" class="section" aria-labelledby="noc-title">
-        <h2 id="noc-title" class="section__title">NOC</h2>
-        <p class="section__hint">Alarmes, incidentes e disponibilidade por serviço e região.</p>
-      </section>
+<section id="noc" class="section" aria-labelledby="noc-title">
+  <h2 id="noc-title" class="section__title">NOC</h2>
+  <p class="section__hint">Alarmes, incidentes e disponibilidade por serviço e região.</p>
+
+  <div class="kpi-grid" style="margin-top:16px">
+    <article class="card kpi-card">
+      <h3 class="kpi-card__title">Dentro do SLA (abertos)</h3>
+      <p class="kpi-card__value" id="noc-in-sla">--</p>
+      <p class="kpi-card__meta" id="noc-in-sla-meta">Atualizando…</p>
+    </article>
+    <article class="card kpi-card">
+      <h3 class="kpi-card__title">Fora do SLA (abertos)</h3>
+      <p class="kpi-card__value" id="noc-out-sla">--</p>
+      <p class="kpi-card__meta" id="noc-out-sla-meta">Atualizando…</p>
+    </article>
+    <article class="card kpi-card">
+      <h3 class="kpi-card__title">Total (janela consultada)</h3>
+      <p class="kpi-card__value" id="noc-total">--</p>
+      <p class="kpi-card__meta" id="noc-total-meta">Atualizando…</p>
+    </article>
+  </div>
+
+  <article class="card" style="margin-top:16px">
+    <h3 class="kpi-card__title" style="text-transform:none">Tickets por cliente</h3>
+    <ul id="noc-by-client" style="margin:8px 0 0;padding-left:18px"></ul>
+  </article>
+</section>
 
       <section id="operacoes" class="section" aria-labelledby="ops-title">
         <h2 id="ops-title" class="section__title">Operações</h2>
