@@ -1,4 +1,3 @@
-// assets/js/app.js
 (function () {
   const navButtons = document.querySelectorAll('.app-nav__item');
   const sections = document.querySelectorAll('.section');
