@@ -41,7 +41,7 @@
   const DIRECT_URL_BASE = 'https://api.movidesk.com/public/v1/tickets';
 
   // Substitua APENAS para teste rápido; remova do commit público em produção.
-  const TOKEN = 'SEU_TOKEN_AQUI';
+  const TOKEN = 'a1632c07-b66f-4c5c-aad6-c898c59cf276';
 
   // Campos e expand baseados no exemplo
   const SELECT_FIELDS = [
