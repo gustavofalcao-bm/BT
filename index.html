@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Visão Gerencial - Base Telco</title>
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <!-- Chart.js por CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   </head>
   <body>
-    <!-- Spinner global -->
     <div class="spinner" id="global-spinner" aria-hidden="true">
       <div class="spinner__ring"></div>
       <img class="spinner__logo" src="assets/images/bt-sigla.jpeg" alt="BT" />
@@ -97,7 +95,7 @@
         <div class="section__header">
           <h2 id="noc-title" class="section__title">NOC</h2>
           <div class="filters">
-            <button class="btn btn--toggle" data-month="current">Mês atual</button>
+            <button class="btn btn--toggle is-selected" data-month="current">Mês atual</button>
             <button class="btn btn--toggle" data-month="previous">Mês anterior</button>
             <span class="filters__info" id="noc-range-label">—</span>
           </div>
@@ -115,7 +113,7 @@
             <p class="kpi-card__meta" id="noc-out-sla-meta">Atualizando…</p>
           </article>
           <article class="card kpi-card">
-            <h3 class="kpi-card__title">Total (janel)</h3>
+            <h3 class="kpi-card__title">Total (janela)</h3>
             <p class="kpi-card__value" id="noc-total">--</p>
             <p class="kpi-card__meta" id="noc-total-meta">Atualizando…</p>
           </article>
@@ -124,11 +122,11 @@
         <div class="grid-2">
           <article class="card">
             <h3 class="card__title">Incidentes por mês</h3>
-            <canvas id="chart-incidents"></canvas>
+            <canvas id="chart-incidents" height="120"></canvas>
           </article>
           <article class="card">
             <h3 class="card__title">% SLA no prazo por mês</h3>
-            <canvas id="chart-sla"></canvas>
+            <canvas id="chart-sla" height="120"></canvas>
           </article>
         </div>
 
