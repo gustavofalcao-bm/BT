@@ -40,9 +40,10 @@ body {
 .btn {
   appearance: none; border: 1px solid transparent; cursor: pointer;
   padding: 10px 14px; border-radius: 10px; font-weight: 600; letter-spacing: .2px;
-  transition: transform .06s ease, background-color .2s ease, border-color .2s ease;
+  transition: transform .06s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+  position: relative; overflow: hidden;
 }
-.btn:active { transform: translateY(1px); }
+.btn:active { transform: translateY(1px) scale(.99); }
 .btn--primary {
   background: linear-gradient(180deg, rgba(14,75,159,.95), rgba(14,75,159,.8));
   border-color: rgba(0,181,226,.35);
@@ -54,6 +55,27 @@ body {
   border-color: var(--color-border);
 }
 .app-nav__item.is-active { outline: 2px solid rgba(0,181,226,.6); outline-offset: 0; }
+
+.btn--toggle {
+  background: rgba(0,181,226,.12);
+  border-color: rgba(0,181,226,.35);
+  color: #d7f6ff;
+}
+.btn--toggle.is-selected {
+  background: rgba(0,181,226,.25);
+  box-shadow: 0 0 0 2px rgba(0,181,226,.15) inset;
+}
+.filters { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.filters__info { color: var(--color-muted); }
+
+/* Ripple leve */
+.btn::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(240px 240px at var(--x,50%) var(--y,50%), rgba(255,255,255,.15), transparent 40%);
+  opacity: 0; transition: opacity .3s ease;
+}
+.btn:hover::after { opacity: .8; }
 
 /* Hero com banner */
 .hero {
@@ -75,22 +97,21 @@ body {
 
 /* Layout conteúdo */
 .container { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
-.section { display: none; }
-.section.is-visible { display: block; }
+.section { display: none; opacity: 0; transform: translateY(6px); transition: opacity .25s ease, transform .25s ease; }
+.section.is-visible { display: block; opacity: 1; transform: translateY(0); }
 .section__title { margin: 0 0 16px; font-size: 20px; }
 .section__hint { margin: 8px 0 0; color: var(--color-muted); }
+.section__header { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
 
-/* Cards de KPI */
-.kpi-grid {
-  display: grid; gap: var(--gap);
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-@media (max-width: 960px) {
-  .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 640px) {
-  .kpi-grid { grid-template-columns: 1fr; }
-}
+/* Panorama 3x3 */
+.kpi-grid { display: grid; gap: var(--gap); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.kpi-grid--3x { grid-template-columns: repeat(3, minmax(0,1fr)); }
+@media (max-width: 960px) { .kpi-grid, .kpi-grid--3x { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .kpi-grid, .kpi-grid--3x { grid-template-columns: 1fr; } }
+
+.grid-2 { display:grid; gap: var(--gap); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 960px) { .grid-2 { grid-template-columns: 1fr; } }
+
 .card {
   background: linear-gradient(180deg, rgba(17,26,43,.9), rgba(17,26,43,.8));
   border: 1px solid var(--color-border);
@@ -98,9 +119,26 @@ body {
   box-shadow: var(--shadow-1);
   padding: 16px;
 }
+.card__title { margin: 0 0 12px; font-size: 16px; color: var(--color-text); }
+
 .kpi-card__title { margin: 0 0 10px; color: var(--color-muted); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .4px; }
 .kpi-card__value { margin: 0 0 6px; font-size: clamp(22px, 3vw, 32px); font-weight: 700; color: #fff; }
 .kpi-card__meta { margin: 0; color: var(--color-muted); font-size: 13px; }
+
+/* Tabelas */
+.table-wrap { overflow: auto; }
+.table {
+  width: 100%; border-collapse: collapse; font-size: 14px;
+}
+.table th, .table td {
+  border-bottom: 1px solid var(--color-border);
+  padding: 10px 8px; text-align: left;
+}
+.table thead th { color: var(--color-muted); font-weight: 600; text-transform: uppercase; font-size: 12px; letter-spacing: .3px; }
+
+/* Listas */
+.list { margin: 8px 0 0; padding-left: 18px; }
+.list li { margin: 6px 0; color: var(--color-text); }
 
 /* Spinner global */
 .spinner {
@@ -122,10 +160,7 @@ body {
 }
 
 /* Keyframes */
-@keyframes spin {
-  from { transform: rotate(0); }
-  to   { transform: rotate(360deg); }
-}
+@keyframes spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
 
 /* Footer */
 .app-footer {
